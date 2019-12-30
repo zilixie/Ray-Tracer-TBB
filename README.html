@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link type="text/css" rel="stylesheet" href="css/github-markdown.css"/>
+<link rel="stylesheet" href="css/github-markdown.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+</head>
+<body>
+
+<pre><code>@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
+}
+</code></pre>
+
+<p></style>
+<article class="markdown-body"></p>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<div style="display:none">
+<span class="math">\(\newcommand{\A}{\mat{A}}\)</span>
+<span class="math">\(\newcommand{\B}{\mat{B}}\)</span>
+<span class="math">\(\newcommand{\C}{\mat{C}}\)</span>
+<span class="math">\(\newcommand{\D}{\mat{D}}\)</span>
+<span class="math">\(\newcommand{\E}{\mat{E}}\)</span>
+<span class="math">\(\newcommand{\F}{\mat{F}}\)</span>
+<span class="math">\(\newcommand{\G}{\mat{G}}\)</span>
+<span class="math">\(\newcommand{\H}{\mat{H}}\)</span>
+<span class="math">\(\newcommand{\I}{\mat{I}}\)</span>
+<span class="math">\(\newcommand{\J}{\mat{J}}\)</span>
+<span class="math">\(\newcommand{\K}{\mat{K}}\)</span>
+<span class="math">\(\newcommand{\L}{\mat{L}}\)</span>
+<span class="math">\(\newcommand{\M}{\mat{M}}\)</span>
+<span class="math">\(\newcommand{\N}{\mat{N}}\)</span>
+<span class="math">\(\newcommand{\One}{\mathbf{1}}\)</span>
+<span class="math">\(\newcommand{\P}{\mat{P}}\)</span>
+<span class="math">\(\newcommand{\Q}{\mat{Q}}\)</span>
+<span class="math">\(\newcommand{\Rot}{\mat{R}}\)</span>
+<span class="math">\(\newcommand{\R}{\mathbb{R}}\)</span>
+<span class="math">\(\newcommand{\S}{\mathcal{S}}\)</span>
+<span class="math">\(\newcommand{\T}{\mat{T}}\)</span>
+<span class="math">\(\newcommand{\U}{\mat{U}}\)</span>
+<span class="math">\(\newcommand{\V}{\mat{V}}\)</span>
+<span class="math">\(\newcommand{\W}{\mat{W}}\)</span>
+<span class="math">\(\newcommand{\X}{\mat{X}}\)</span>
+<span class="math">\(\newcommand{\Y}{\mat{Y}}\)</span>
+<span class="math">\(\newcommand{\argmax}{\mathop{\text{argmax}}}\)</span>
+<span class="math">\(\newcommand{\argmin}{\mathop{\text{argmin}}}\)</span>
+<span class="math">\(\newcommand{\a}{\vec{a}}\)</span>
+<span class="math">\(\newcommand{\b}{\vec{b}}\)</span>
+<span class="math">\(\newcommand{\c}{\vec{c}}\)</span>
+<span class="math">\(\newcommand{\d}{\vec{d}}\)</span>
+<span class="math">\(\newcommand{\e}{\vec{e}}\)</span>
+<span class="math">\(\newcommand{\f}{\vec{f}}\)</span>
+<span class="math">\(\newcommand{\g}{\vec{g}}\)</span>
+<span class="math">\(\newcommand{\mat}[1]{\mathbf{#1}}\)</span>
+<span class="math">\(\newcommand{\min}{\mathop{\text{min}}}\)</span>
+<span class="math">\(\newcommand{\m}{\vec{m}}\)</span>
+<span class="math">\(\newcommand{\n}{\vec{n}}\)</span>
+<span class="math">\(\newcommand{\p}{\vec{p}}\)</span>
+<span class="math">\(\newcommand{\q}{\vec{q}}\)</span>
+<span class="math">\(\newcommand{\r}{\vec{r}}\)</span>
+<span class="math">\(\newcommand{\transpose}{{\mathsf T}}\)</span>
+<span class="math">\(\newcommand{\tr}[1]{\mathop{\text{tr}}{\left(#1\right)}}\)</span>
+<span class="math">\(\newcommand{\s}{\vec{s}}\)</span>
+<span class="math">\(\newcommand{\t}{\vec{t}}\)</span>
+<span class="math">\(\newcommand{\u}{\vec{u}}\)</span>
+<span class="math">\(\newcommand{\vec}[1]{\mathbf{#1}}\)</span>
+<span class="math">\(\newcommand{\x}{\vec{x}}\)</span>
+<span class="math">\(\newcommand{\y}{\vec{y}}\)</span>
+<span class="math">\(\newcommand{\z}{\vec{z}}\)</span>
+<span class="math">\(\newcommand{\0}{\vec{0}}\)</span>
+<span class="math">\(\renewcommand{\v}{\vec{v}}\)</span>
+<!-- https://github.com/mathjax/MathJax/issues/1766 -->
+<span class="math">\(\renewcommand{\hat}[1]{\widehat{#1}}\)</span>
+</div>
+
+<h1 id="computergraphics–raytracing">CS-GY-6533 Computer Graphic: Ray Tracing</h1>
+
+<h2 id="ds">Data Structures</h2>
+<p>Let's first talk about the data structures that I created and is using in this assignment. The main idea here is that we consider each principle element that constructs a part of the scene as a individual class, and define those classes in <code>.h</code> files. </p>
+
+<blockquote>
+<p>
+<code>scene_elements.h</code><br>
+<code>material.h</code><br>
+<code>sphere.h</code><br>
+<code>triangle.h</code><br>
+<code>tri_mesh.h</code><br>
+<code>plane.h</code><br>
+</p></blockquote>
+
+<h3>scene_elements.h</h3>
+<p><code>scene_elements.h</code> is where I defined general elements that construct the scene. </p>
+<p>A Ray has origin (eye) and direction (d). <br>Both of these two attributes are Eigen vector with 3 doubles.</p>
+<blockquote>
+<pre><code>class Ray {
+	public:
+		Eigen::Vector3d origin;
+		Eigen::Vector3d direction;
+};</code></pre>
+</blockquote>
+
+	<p>Object is a class to be implemented by Sphere, Triangle, TriMesh and Plane. It has a not implemented method call <code>ray_intersect</code> which takes in a Ray instance as input and returns a bool indicating whether this object is hitted by the given ray. If it is hit, then at meantime it will output t and n, which are respectively the parameterized distance of ray from origin to intersection point and the normal at the intersection point. In addition, Object has a material attribute that specifies the material features (ka, kd, ks, km and phong exp) that this object is using.</p>
+<blockquote>
+<pre><code>class Object {
+	public:
+		Material* material;
+	virtual bool ray_intersect(const Ray & ray, double & t, Eigen::Vector3d & n, const double t0) const = 0;
+};</code></pre>
+</blockquote>
+
+	<p>Light has point and intensity. <code>reverse_light</code> computes the distance and direction from a given point in 3d to the origin of the light source.</p>
+<blockquote>
+<pre><code>class Light {
+	public:
+		Eigen::Vector3d p;
+		double intensity;
+	void reverse_light(const Eigen::Vector3d & query, Eigen::Vector3d & direction, double & distance) const;
+};</code></pre>
+</blockquote>
+
+	<p>Consider a scene as a sandbox, given a ray, the scene will response with:
+id: index of obj that was hit by ray.
+t: parameterized distance
+n: normal of the hit point.</p>
+<blockquote>
+<pre><code>class Response {
+	public:
+		int id;
+		double t;
+		Eigen::Vector3d n;
+};
+</code></pre>
+</blockquote>
+
+<h3>material.h</h3>
+<p><code>material.h</code> is where I defined Materials with <code>ambient</code>, <code>diffuse</code>, <code>specular</code>, <code>mirror</code> and <code>phong exp</code>. </p>
+<blockquote>
+<pre><code>class Material {
+	public:
+		// Ambient, Diffuse, Specular, Mirror Color
+  		Eigen::Vector3d ambient;
+  		Eigen::Vector3d diffuse;
+  		Eigen::Vector3d specular;
+  		Eigen::Vector3d mirror;
+  		double exp; // Phong exponent
+};
+</code></pre>
+</blockquote>
+
+<h3>shpere.h</h3>
+<p>A sphere is defined by a center (c) and radius (r). </p>
+<blockquote>
+<pre><code>class Sphere : public Object {
+	public:
+		double r;
+		Eigen::Vector3d c;
+	// check if the ray intersects the sphere
+	bool ray_intersect(const Ray & ray, double & t, Eigen::Vector3d & n, const double t0) const;
+};
+</code></pre>
+</blockquote>
+
+
+<h3>triangle.h</h3>
+<p>A triangle is defined by three vectors in 3d (p0, p1, p2). </p>
+<blockquote>
+<pre><code>class Triangle : public Object {
+	public:
+		Eigen::Vector3d p0;
+		Eigen::Vector3d p1;
+		Eigen::Vector3d p2;
+	// check if the ray intersects the sphere
+	bool ray_intersect(const Ray & ray, double & t, Eigen::Vector3d & n, const double t0) const;
+};
+</code></pre>
+</blockquote>
+
+
+<h3>tri_mesh.h</h3>
+<p>A triangle mesh is defined by a vector of many triangles. </p>
+<blockquote>
+<pre><code>class TriMesh : public Object {
+	public:
+		std::vector&lt;Object*&gt;  meshes;
+	bool ray_intersect(const Ray & ray, double & t, Eigen::Vector3d & n, const double t0) const;
+};
+</code></pre>
+</blockquote>
+
+
+<h2 id="ds">Generic Functions</h2>
+<p>I also defined some generic functions that are commonly used for the purpose of generalizing in the computational process of ray tracing.</p>
+
+<blockquote>
+<p>
+<code>closest_intersection.h</code><br>
+<code>shading.h</code><br>
+<code>read_off.h</code><br>
+<code>define_scene.h</code><br>
+</p></blockquote>
+
+<h3>closest_intersection.h</h3>
+<p>Given a Ray, vector of Objects, return a boolean indicating whether some object is hitted by this ray. if some objects are hitted, find the hit with smallest t and its matching obj id, and normal. pack these as Response and modify the passed in pointer </p>
+<blockquote>
+<pre><code>bool closest_intersection(
+	const Ray & r, 
+	const std::vector<Object*> & objs, 
+	Response* & obj_response,
+	const double t0);</code></pre>
+</blockquote>
+
+<h3>shading.h</h3>
+<p><code>shading.h</code> will do:<br>
+first inspect whether the ray intersect any object in vector. <br>If not find any intersection, return false without modifying any input variables. <br>if find intersect, return true and modify the input rgb variable. All the computations goes here. That's it.
+ </p>
+<blockquote>
+<pre><code>bool shading(
+	const Ray & ray,
+	Eigen::Vector3d & rgb,
+	const std::vector<Object*> & objects,
+	const std::vector<Light*> & lights,
+	const int nth_reflection,
+	const double t0,
+	const bool & enable_shadow,
+	const bool & enable_mirror);</code></pre>
+</blockquote>
+
+<h3>read_off.h</h3>
+<p><code>read_off.h</code> will read an OFF file into a V and F. V is a Eigen Matrix of double and F is a Eigen matrix of integer.
+ </p>
+<blockquote>
+<pre><code>bool read_off(const std::string filename, Eigen::MatrixXd & V, Eigen::MatrixXi & F);</code></pre>
+</blockquote>
+
+<h3>define_scene.h</h3>
+<p><code>define_scene.h</code> defines functions for each scene that generally takes in a vector of Object pointer and a vector of Light pointer and initiate the instance that these pointer is pointing to.
+ </p>
+<blockquote>
+<pre><code>bool read_off(const std::string filename, Eigen::MatrixXd & V, Eigen::MatrixXi & F);</code></pre>
+</blockquote>
+
+<h2 id="ds">Part 1</h2>
+<p>The goal of this part is to let our program support rendering for spheres in general positions. In this part, orthographic viewing ray and simple Lambertian shading are used. </p>
+
+<figure>
+<img src="images/part1_1.png" alt="Running part 1 should produce this image." style="width:600px;" />
+<figcaption>Running <code>./Assignment1_bin</code> should produce this image.</figcaption>
+</figure>
+
+<h2 id="ds">Part 2</h2>
+<p>The first goal of this part is to assign each sphere in the previous scene a material feature. This is done by the file <code>define_scene.h</code> and among these spheres, the green and orange spheres are purely diffuse. This is done by setting the <code>diffuse</code> vector3d to be zeros. The purple and blue spheres use diffuse and specular shading, so we can see the specular illumination on the surface. The second goal is to add another light source. This is done by pushing another Light instance to the lights vector that defines all the lights in the scene.</p>
+
+<figure>
+<img src="images/part1_2.png" alt="Running part 2 should produce this image." style="width:600px;" />
+<figcaption>Running <code>./Assignment1_bin</code> should produce this image.</figcaption>
+</figure>
+
+
+<h2 id="ds">Part 3</h2>
+<p>In the previous part we are still using orthographic viewing ray, the only thing that is changed in this part is that now we want to use perspective ray. This can be accomplished by constructing Ray instances with different directions and all of these Rays should have a fixed origin.</p>
+
+<figure>
+<img src="images/part1_3.png" alt="Running part 3 should produce this image." style="width:600px;" />
+<figcaption>Running <code>./Assignment1_bin</code> should produce this image.</figcaption>
+</figure>
+
+<h2 id="ds">Part 4</h2>
+<p>In Part 4 we are tracing triangle meshes instead of sphere, this seems totally different, but in fact they are similar. First of all is to read the OFF files in memory. Generally, OFF file supports mesh of quadrangle, pentagon...... but for this assignment i only consider triangle. These tasks are done by calling <code>read_off.h</code>. Then consider a triangle mesh as a whole object (let's say the bummy.off), ray tracing this object is the same as ray tracing a "scene" with a lot of triangles, which is just like tracing a lot of spheres. except that for the Response from scene, we are getting (id, t, normal) from triangles. </p>
+
+<figure>
+<img src="images/part1_4.png" alt="Running part 4 should produce this image." style="width:600px;" />
+<figcaption>Running <code>./Assignment1_bin</code> should produce this image.</figcaption>
+</figure>
+
+
+<h2 id="ds">Part 5</h2>
+<p>First of all, in part 5 our ray tracer needs to support tracing for all general object types (sphere, triangle, mesh and plane, which is additional). This can be done easily because of the parent Object type that is used. Then for adding shadow to our scene, i pass in a flag variable <code>enable_shadow</code> to the <code>shading</code> function to separate the computation of plain color and the computation of color that involving shadow. The process is: for each pixel, and for each light, before we compute the diffuse and specular value added by this light, we judge if or not this pixel is in the shadow of this light. If it is, then we don't add diffuse and specular, instead, we add (0,0,0) which is dark. If it is not shadow, then we add the diffuse and specular as usual. Note that, a pixel in the shadow of one light doesn't means that it is totally dark, for the reason that it could be illuminated by other lights, but if a pixel is not illuminated by any light, then it will only have the color of <code>ambient</code>.</p>
+
+<figure>
+<img src="images/part1_5.png" alt="Running part 5 should produce this image." style="width:600px;" />
+<figcaption>Running <code>./Assignment1_bin</code> should produce this image.</figcaption>
+</figure>
+
+
+<h2 id="ds">Part 6</h2>
+<p>To add a mirror to the scene in this part, I created a plane made of material with high <code>mirror</code> value and high <code>specular</code> value. Then similar to part 5 i also pass in a flag variable <code>enable_mirror</code> to separate the computation of mirror effect and regular rendering. In addition to that, i specify a limit. The limit restrict the recursion depth that this function can run into. Without considering the mirror, when we are shooting a ray, what we get from the scene is just a rgb value. Now assuming the ray we shoot hits a mirror, the color we are getting is what this mirror should look like (let's name it rgb1) and it is the color that we would definitely add to the final rgb. Now because it is a mirror, we also need to consider the reflective ray. As stated in many resources, this is same as looking from the mirror and looking towards to reflective direction. Then, this will give another color, the color we get from the reflective ray. let's call it rgb2. The final rgb for this pixel is essentially rgb1 + m * rgb2, where m is the <code>mirror</code> coefficient. But wait...... the reflective ray can also hit another thing that is reflective, then the recursion won't end. That why we need to specify a limit. </p>
+
+<figure>
+<img src="images/part1_6.png" alt="Running part 6 should produce this image." style="width:600px;" />
+<figcaption>Running <code>./Assignment1_bin</code> should produce this image.</figcaption>
+</figure>
+
+<h2 id="ds">Part 7</h2>
+<p>Part 7 is the parallelized implementation of part 6 using tbb. The first we need to do is to include the tbb to our project. I place the cloned tbb source code into the <code>../ext</code> folder and add these lines to <code>CMakeLists.txt</code>.</p>
+<blockquote>
+<pre><code>include(../ext/tbb/cmake/TBBGet.cmake)
+tbb_get(TBB_ROOT tbb_root CONFIG_DIR TBB_DIR)
+find_package(TBB REQUIRED tbb)
+target_link_libraries(${PROJECT_NAME}_bin ${TBB_IMPORTED_TARGETS})
+</code></pre>
+</blockquote>
+
+<figure>
+<img src="images/part1_7.png" alt="Running part 6 should produce this image." style="width:600px;" />
+<figcaption>Running <code>./Assignment1_bin</code> should produce this image.</figcaption>
+</figure>
+
+<h2 id="ds">Part 8</h2>
+<p>Animated scene from part 6 by moving the camera in circle around the scene. The animated gif is created by combining 80 key frames where each key frame is shifted by k * 5&#176; from the origin position. After getting all the images, run the following two lines sequentially to produce the output .gif file.</p>
+<blockquote>
+<pre><code>convert -delay 10 -loop 0 $(ls part8-*.png | sort -V) animated.gif
+rm part8-*.png</code></pre>
+</blockquote>
+
+<figure>
+<img src="images/animated.gif" alt="Running part 8 should produce this image." style="width:600px;" />
+<figcaption>Running <code>./Assignment1_bin</code> should produce this image.</figcaption>
+</figure>
+
+
+<h2 id="ds">How To Run?</h2>
+<p>Within the zx979 folder:</p>
+<blockquote>
+<pre><code>cd Assignment_1
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ../
+make
+./Assignment1_bin</code></pre>
+</blockquote>
+
+
+</body>
+</html>
