@@ -1,4 +1,7 @@
 # Ray-Tracer-TBB
+A ray tracer that can run in parallel using intel-tbb.
+<img src="https://github.com/zilixie/Ray-Tracer-TBB/blob/master/images/animated.gif">
+
 ## Data Structures
 The main idea here is that we consider each principle element that constructs a part of the scene as a individual class, and define those classes in .h files.  
 
