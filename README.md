@@ -119,7 +119,7 @@ First of all, in part 5 our ray tracer needs to support tracing for all general 
 Running ./Assignment1_bin should produce this image.
 
 ## Part 6
-To add a mirror to the scene in this part, I created a plane made of material with high mirror value and high specular value. Then similar to part 5 i also pass in a flag variable enable_mirror to separate the computation of mirror effect and regular rendering. In addition to that, i specify a limit. The limit restrict the recursion depth that this function can run into. Without considering the mirror, when we are shooting a ray, what we get from the scene is just a rgb value. Now assuming the ray we shoot hits a mirror, the color we are getting is what this mirror should look like (let's name it rgb1) and it is the color that we would definitely add to the final rgb. Now because it is a mirror, we also need to consider the reflective ray. As stated in many resources, this is same as looking from the mirror and looking towards to reflective direction. Then, this will give another color, the color we get from the reflective ray. let's call it rgb2. The final rgb for this pixel is essentially rgb1 + m * rgb2, where m is the mirror coefficient. But wait...... the reflective ray can also hit another thing that is reflective, then the recursion won't end. That why we need to specify a limit.
+To add a mirror to the scene in this part, I created a plane made of material with high mirror value and high specular value. Then similar to part 5 i also pass in a flag variable enable_mirror to separate the computation of mirror effect and regular rendering. In addition to that, i specify a limit. The limit restrict the recursion depth that this function can run into. Without considering the mirror, when we are shooting a ray, what we get from the scene is just a rgb value. Now assuming the ray we shoot hits a mirror, the color we are getting is what this mirror should look like (let's name it rgb1) and it is the color that we would definitely add to the final rgb. Now because it is a mirror, we also need to consider the reflective ray. As stated in many resources, this is same as looking from the mirror and looking towards to reflective direction. Then, this will give another color, the color we get from the reflective ray. let's call it rgb2. The final rgb for this pixel is essentially rgb1 + m * rgb2, where m is the mirror coefficient. But the reflective ray can also hit another thing that is reflective, then the recursion won't end, so we need to specify a limit.
 <img src="https://github.com/zilixie/Ray-Tracer-TBB/blob/master/images/part1_6.png">
 Running ./Assignment1_bin should produce this image.
 
@@ -135,6 +135,7 @@ target_link_libraries(${PROJECT_NAME}_bin ${TBB_IMPORTED_TARGETS})
 
 ## Part 8
 Animated scene from part 6 by moving the camera in circle around the scene. The animated gif is created by combining 80 key frames where each key frame is shifted by k * 5° from the origin position. After getting all the images, run the following two lines sequentially to produce the output .gif file.
+
 <img src="https://github.com/zilixie/Ray-Tracer-TBB/blob/master/images/animated.gif">
 
 >convert -delay 10 -loop 0 $(ls part8-*.png | sort -V) animated.gif
