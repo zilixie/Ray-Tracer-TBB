@@ -1,5 +1,5 @@
 # Ray-Tracer-TBB
-A ray tracer that can run in parallel using intel-tbb.
+A ray tracer that can run in parallel using intel-tbb.  
 <img src="https://github.com/zilixie/Ray-Tracer-TBB/blob/master/images/animated.gif">
 
 ## Data Structures
