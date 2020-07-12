@@ -135,7 +135,7 @@ target_link_libraries(${PROJECT_NAME}_bin ${TBB_IMPORTED_TARGETS})
 
 ## Part 8
 Animated scene from part 6 by moving the camera in circle around the scene. The animated gif is created by combining 80 key frames where each key frame is shifted by k * 5° from the origin position. After getting all the images, run the following two lines sequentially to produce the output .gif file.
-<img src="https://github.com/zilixie/Ray-Tracer-TBB/blob/master/images/part1_8.png">
+<img src="https://github.com/zilixie/Ray-Tracer-TBB/blob/master/images/animated.gif">
 
 >convert -delay 10 -loop 0 $(ls part8-*.png | sort -V) animated.gif
 >rm part8-*.png
